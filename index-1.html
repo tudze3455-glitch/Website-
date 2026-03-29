@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            width: 300px;
+            text-align: center;
+        }
+        .message {
+            display: none;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 500px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .message.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .normal-text {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <input type="text" id="nameInput" placeholder="Apna naam likhiye..." autocomplete="off">
+    </div>
+    
+    <div id="specialMessage" class="message">
+        I really miss you 🥺🥺🥺🥺🥺🫂😭😭😭😭😭<br><br>
+        ab To jyada hi pyar karne Laga hun, mujhe nahin pata kaise ek din bhi gujarna chahie 😔🥺<br><br>
+        Shayad se aapke ghar mein abhi tak situation Sahi nahin hua Hai, 🫂😔<br><br>
+        koi baat nahin thoda sa time aur lagega kya ji main Sahi bol Raha Na 🫂🫂🥺🥺<br><br>
+        aur han khana time per khana.....
+    </div>
+    
+    <div id="normalText" class="normal-text">
+        Koi naam likhiye upar wale box mein...
+    </div>
+
+    <script>
+        const input = document.getElementById('nameInput');
+        const specialMessage = document.getElementById('specialMessage');
+        const normalText = document.getElementById('normalText');
+
+        input.addEventListener('input', function() {
+            const value = input.value.trim().toLowerCase();
+            
+            if (value === 'riya' || value === 'riya ') {
+                specialMessage.classList.add('show');
+                normalText.style.display = 'none';
+                input.style.border = '3px solid #ff6b9d';
+            } else {
+                specialMessage.classList.remove('show');
+                normalText.style.display = 'block';
+                input.style.border = 'none';
+            }
+        });
+
+        // Enter press karne par bhi check karega
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const value = input.value.trim().toLowerCase();
+                if (value === 'riya' || value === 'riya ') {
+                    specialMessage.classList.add('show');
+                    normalText.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
